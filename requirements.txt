@@ -1,0 +1,17 @@
+streamlit
+numpy
+pandas 
+seaborn
+dvc
+notebook
+numpy
+matplotlib
+seaborn
+scipy
+Flask
+Flask-Cors
+tensorflow
+scikit-learn
+catboost
+xgboost
+-e .
