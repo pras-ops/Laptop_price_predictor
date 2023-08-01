@@ -29,9 +29,7 @@ class DataTransformation(BaseEstimator, TransformerMixin):
         logging.info("DataTransformation: Starting data transformation steps...")
         # Logging the DataFrame before any transformations
         logging.info(f"Before transformation:\n{X}")
-        
-        X = X.copy()
-        X = pd.DataFrame(X)  # Make a copy of the DataFrame to avoid modifying the original data
+        X 
         logging.info(f"Column names present in the data: {X.columns.tolist()}")
         # Extract column names from the DataFrame
         existing_columns = set(X.columns)
@@ -148,15 +146,13 @@ class DataTransformation(BaseEstimator, TransformerMixin):
 
         # Create a pipeline to encapsulate the data transformation steps
         data_pipeline = Pipeline(steps=[
-            ('data_transform', data_transformer),
-            ('scaler', StandardScaler()),
-            ('one_hot_encoder', OneHotEncoder(handle_unknown='ignore'))
+            ('data_transform', data_transformer)
         ])
 
         # Create the ColumnTransformer
         preprocessor = ColumnTransformer(transformers=[
             ('num', data_pipeline, numerical_columns),
-            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_columns)
+            ('cat', data_pipeline , categorical_columns)
         ])
 
         logging.info("data_transformation_pipeline: Starting data transformation pipeline...")
